@@ -1,0 +1,7 @@
+Base path: 'D:/GAME DEV/Versions/2019.4.13f1/Editor/Data', plugins path 'D:/GAME DEV/Versions/2019.4.13f1/Editor/Data/PlaybackEngines'
+Cmd: initializeCompiler
+Cmd: compileComputeKernel
+  api=4 insize=18731 outsize=8518 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=5032 outsize=9142 ok=1
+Cmd: initializeCompiler
