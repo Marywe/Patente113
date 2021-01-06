@@ -6,14 +6,14 @@ using UnityEngine.AI;
 public class Monster : MonoBehaviour
 {
    
-    [SerializeField]
-    [Range(2, 8)]
-    private float maxSpeed;
-    [SerializeField]
-    [Range(0, 5)]
-    private float dmgSpeed;
+    //[SerializeField]
+    //[Range(2, 8)]
+    //private float maxSpeed;
+    //[SerializeField]
+    //[Range(0, 5)]
+    //private float dmgSpeed;
 
-    public Transform despawnPoint;
+   
     [SerializeField]
     private Transform target;
     private Player targetScript;
@@ -21,10 +21,15 @@ public class Monster : MonoBehaviour
     private NavMeshAgent agent;
     private Animator animator;
 
-    private bool hasToChase = true;
+    public bool hasToChase = false;
 
     [SerializeField]
     private float recoveryTime;
+
+    [SerializeField]
+    private Transform[] spawnZones;
+    public Transform despawnPoint;
+
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -53,33 +58,24 @@ public class Monster : MonoBehaviour
         // SoundManager.PlaySound(SoundManager.Sound.LightOn);
         // Descomenta para sentir en tus carnes como dos audios se reproducen a la vez
 
-
         //Stun
+        hasToChase = false;
         agent.isStopped = true;
 
+        StartCoroutine(Disappear());
+
         //Quitar stun a los x secs
-        Invoke("StartWalking", 2);
+        //Invoke("StartWalking", 2);
 
         //Cambia vel
-        agent.speed = dmgSpeed;
+        //agent.speed = dmgSpeed;
 
         //anim dmg
 
         //Se recupera al x tiempo
-        StartCoroutine(Recover());
+        //StartCoroutine(Recover());
     }
-    private IEnumerator Recover()
-    {
-        yield return new WaitForSeconds(recoveryTime);
-        agent.speed = maxSpeed;
-       
-    }
-
-    private void StartWalking() //Para después del stun o para cuando tenga que andar
-    {
-        agent.isStopped = false;
-    }
-
+  
     private void Atacar()
     {
         targetScript.GetHit();
@@ -87,20 +83,41 @@ public class Monster : MonoBehaviour
         //animación atacar
     }
 
-    private void Disappear()
+    private IEnumerator Disappear()
     {
-        hasToChase = false;
+        
+        yield return new WaitForSeconds(3);
+
         transform.position = despawnPoint.position;
+
+        yield return new WaitForSeconds(7);
+        Appear();
     }
 
     private void Appear() //Para que aparezca en los puntos q nos interesa
     {
+        transform.position = spawnZones[Random.Range(0, spawnZones.Length)].position;
+        
+        agent.isStopped = false;
         hasToChase = true;
     }
 
     public void RayTargetHit() //la función que llama la weapon
     {
         GetHit();
+    }
+
+
+    //Deprefukincapted
+    private IEnumerator Recover()
+    {
+        yield return new WaitForSeconds(recoveryTime);
+        //agent.speed = maxSpeed;
+    }
+
+    private void StartWalking() //Para después del stun o para cuando tenga que andar
+    {
+        agent.isStopped = false;
     }
 
 }

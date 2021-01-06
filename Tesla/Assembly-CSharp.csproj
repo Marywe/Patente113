@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{460ECD95-E0E3-A81C-162A-61DC16DC6E03}</ProjectGuid>
+    <ProjectGuid>{00B8E65C-6A4C-234B-DF3C-1995B06F08AC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -80,12 +80,13 @@
     <Compile Include="Assets\Scripts\Player\Player.cs" />
     <Compile Include="Assets\Scripts\Player\Weapon.cs" />
     <Compile Include="Assets\Scripts\SoundManager.cs" />
-    <None Include="Assets\Majo y Susana Pruebas assets\PolygonSciFiCity\Shaders\Polygon_Triplanar.shader" />
-    <None Include="Assets\Majo y Susana Pruebas assets\Locker\1\Shaders\VIS_BumpSpec.shader" />
+    <Compile Include="Assets\Scripts\TriggerEvent.cs" />
+    <None Include="Assets\Majo y Susana\PolygonSciFiCity\Shaders\Polygon_Triplanar.shader" />
+    <None Include="Assets\Majo y Susana\Locker\1\Shaders\VIS_BumpSpec.shader" />
     <None Include="Assets\PISTOLA\Post-pro visor\ThermalVision.shader" />
-    <None Include="Assets\Majo y Susana Pruebas assets\LabAssets\Shaders\SBS_Mana.shader" />
-    <None Include="Assets\Majo y Susana Pruebas assets\PolygonSciFiCity\Shaders\Polygon_UVScroll.shader" />
-    <None Include="Assets\Majo y Susana Pruebas assets\Locker\Shaders\VIS_BumpSpec.shader" />
+    <None Include="Assets\Majo y Susana\LabAssets\Shaders\SBS_Mana.shader" />
+    <None Include="Assets\Majo y Susana\PolygonSciFiCity\Shaders\Polygon_UVScroll.shader" />
+    <None Include="Assets\Majo y Susana\Locker\Shaders\VIS_BumpSpec.shader" />
     <Reference Include="UnityEngine">
       <HintPath>D:/GAME DEV/Versions/2019.4.13f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
@@ -624,36 +625,36 @@
       <HintPath>D:/GAME DEV/Versions/2019.4.13f1/Editor/Data/MonoBleedingEdge/lib/mono/unityscript/Boo.Lang.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>C:/Users/kiril/Downloads/Tesla. 0 .2/Teslav2/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>D:/GAME DEV/PROYECTOS UNITY/Patente113/Tesla/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>C:/Users/kiril/Downloads/Tesla. 0 .2/Teslav2/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>D:/GAME DEV/PROYECTOS UNITY/Patente113/Tesla/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>C:/Users/kiril/Downloads/Tesla. 0 .2/Teslav2/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>D:/GAME DEV/PROYECTOS UNITY/Patente113/Tesla/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>C:/Users/kiril/Downloads/Tesla. 0 .2/Teslav2/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>D:/GAME DEV/PROYECTOS UNITY/Patente113/Tesla/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Postprocessing.Editor">
-      <HintPath>C:/Users/kiril/Downloads/Tesla. 0 .2/Teslav2/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
+      <HintPath>D:/GAME DEV/PROYECTOS UNITY/Patente113/Tesla/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>C:/Users/kiril/Downloads/Tesla. 0 .2/Teslav2/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+      <HintPath>D:/GAME DEV/PROYECTOS UNITY/Patente113/Tesla/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>C:/Users/kiril/Downloads/Tesla. 0 .2/Teslav2/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+      <HintPath>D:/GAME DEV/PROYECTOS UNITY/Patente113/Tesla/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Postprocessing.Runtime">
-      <HintPath>C:/Users/kiril/Downloads/Tesla. 0 .2/Teslav2/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
+      <HintPath>D:/GAME DEV/PROYECTOS UNITY/Patente113/Tesla/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>C:/Users/kiril/Downloads/Tesla. 0 .2/Teslav2/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>D:/GAME DEV/PROYECTOS UNITY/Patente113/Tesla/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{EFAB5731-0232-CBC1-AC60-027802C822E1}</Project>
+      <Project>{D815BA9D-14C9-63C0-0F37-B219E017BD34}</Project>
       <Name>Assembly-CSharp-firstpass</Name>
     </ProjectReference>
   </ItemGroup>

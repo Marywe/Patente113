@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{EFAB5731-0232-CBC1-AC60-027802C822E1}</ProjectGuid>
+    <ProjectGuid>{D815BA9D-14C9-63C0-0F37-B219E017BD34}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp-firstpass</AssemblyName>
@@ -647,31 +647,31 @@
       <HintPath>D:/GAME DEV/Versions/2019.4.13f1/Editor/Data/MonoBleedingEdge/lib/mono/unityscript/Boo.Lang.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>C:/Users/kiril/Downloads/Tesla. 0 .2/Teslav2/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>D:/GAME DEV/PROYECTOS UNITY/Patente113/Tesla/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>C:/Users/kiril/Downloads/Tesla. 0 .2/Teslav2/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>D:/GAME DEV/PROYECTOS UNITY/Patente113/Tesla/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>C:/Users/kiril/Downloads/Tesla. 0 .2/Teslav2/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>D:/GAME DEV/PROYECTOS UNITY/Patente113/Tesla/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>C:/Users/kiril/Downloads/Tesla. 0 .2/Teslav2/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>D:/GAME DEV/PROYECTOS UNITY/Patente113/Tesla/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Postprocessing.Editor">
-      <HintPath>C:/Users/kiril/Downloads/Tesla. 0 .2/Teslav2/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
+      <HintPath>D:/GAME DEV/PROYECTOS UNITY/Patente113/Tesla/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>C:/Users/kiril/Downloads/Tesla. 0 .2/Teslav2/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+      <HintPath>D:/GAME DEV/PROYECTOS UNITY/Patente113/Tesla/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>C:/Users/kiril/Downloads/Tesla. 0 .2/Teslav2/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+      <HintPath>D:/GAME DEV/PROYECTOS UNITY/Patente113/Tesla/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Postprocessing.Runtime">
-      <HintPath>C:/Users/kiril/Downloads/Tesla. 0 .2/Teslav2/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
+      <HintPath>D:/GAME DEV/PROYECTOS UNITY/Patente113/Tesla/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>C:/Users/kiril/Downloads/Tesla. 0 .2/Teslav2/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>D:/GAME DEV/PROYECTOS UNITY/Patente113/Tesla/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup></ItemGroup>
