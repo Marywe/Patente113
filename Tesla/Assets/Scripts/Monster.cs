@@ -30,6 +30,8 @@ public class Monster : MonoBehaviour
     private Transform[] spawnZones;
     public Transform despawnPoint;
 
+
+    public bool disappearToAppear=true;
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -61,6 +63,7 @@ public class Monster : MonoBehaviour
         //Stun
         hasToChase = false;
         agent.isStopped = true;
+        agent.enabled = false;
 
         StartCoroutine(Disappear());
 
@@ -87,17 +90,21 @@ public class Monster : MonoBehaviour
     {
         
         yield return new WaitForSeconds(3);
-
+        
         transform.position = despawnPoint.position;
-
-        yield return new WaitForSeconds(7);
-        Appear();
+        Debug.Log(despawnPoint.position);
+        Debug.Log(transform.position);
+        if (disappearToAppear)
+        {
+            yield return new WaitForSeconds(7);
+            Appear();
+        }
     }
 
     private void Appear() //Para que aparezca en los puntos q nos interesa
     {
         transform.position = spawnZones[Random.Range(0, spawnZones.Length)].position;
-        
+        agent.enabled = true;
         agent.isStopped = false;
         hasToChase = true;
     }

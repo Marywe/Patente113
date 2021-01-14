@@ -39,10 +39,11 @@ public class GameManager : MonoBehaviour
         switch (triggerNum)
         {
             case 1:
-                StartCoroutine(StartHunt());
+                StartCoroutine(StartHunt(true, true));
                 break;
 
             case 2:
+                StartCoroutine(StartHunt(false, false));
                 break;
 
             case 3:
@@ -51,14 +52,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private IEnumerator StartHunt()
+    private IEnumerator StartHunt(bool hasToChase, bool disToApp)
     {       
         yield return new WaitForSeconds(2);
 
         //open door (soniditos tal cual)
-
-        monster.hasToChase = true;
-
+        monster.hasToChase = hasToChase;
+        monster.disappearToAppear = disToApp;
     }
+
+
 
 }
