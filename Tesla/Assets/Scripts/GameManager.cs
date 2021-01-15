@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public GameObject climbText;
     public GameObject rechargeText;
 
-    private int triggerNum = 0;
+    public int triggerNum = 0;
 
     public static GameManager instance
     {
@@ -39,14 +39,18 @@ public class GameManager : MonoBehaviour
         switch (triggerNum)
         {
             case 1:
-                StartCoroutine(StartHunt(true, true));
+                StartCoroutine(StartHunt(true, true)); //laberinto
                 break;
 
             case 2:
-                StartCoroutine(StartHunt(false, false));
+                StartCoroutine(StartHunt(false, false)); //sales del laberinto
                 break;
 
             case 3:
+                StartCoroutine(StartHunt(true, false)); //entras en la sala bífida
+                break;
+            case 4:
+                StartCoroutine(StartHunt(false, false)); //sales de ella y desaparece
                 break;
 
         }
@@ -59,6 +63,7 @@ public class GameManager : MonoBehaviour
         //open door (soniditos tal cual)
         monster.hasToChase = hasToChase;
         monster.disappearToAppear = disToApp;
+        if (!hasToChase) monster.Disappear();
     }
 
 

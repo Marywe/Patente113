@@ -46,7 +46,20 @@ public class Monster : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (hasToChase) Chase();
+        if (hasToChase && disappearToAppear) Chase();
+        else if (hasToChase && !disappearToAppear)
+        {
+            //spawn en sitio
+            if (GameManager.instance.triggerNum == 3)
+            {
+                transform.position = spawnZones[3].position;
+            }
+            
+        }
+        else if (!hasToChase && !disappearToAppear) { //pa que no haga nada
+            Disappear();
+            disappearToAppear = true;
+        }
     }
 
     private void Chase()
@@ -62,13 +75,8 @@ public class Monster : MonoBehaviour
 
         //Stun
         hasToChase = false;
-        agent.isStopped = true;
-        agent.enabled = false;
 
         StartCoroutine(Disappear());
-
-        //Quitar stun a los x secs
-        //Invoke("StartWalking", 2);
 
         //Cambia vel
         //agent.speed = dmgSpeed;
@@ -86,14 +94,13 @@ public class Monster : MonoBehaviour
         //animación atacar
     }
 
-    private IEnumerator Disappear()
+    public IEnumerator Disappear()
     {
-        
+        agent.isStopped = true;
+        agent.enabled = false;
         yield return new WaitForSeconds(3);
         
         transform.position = despawnPoint.position;
-        Debug.Log(despawnPoint.position);
-        Debug.Log(transform.position);
         if (disappearToAppear)
         {
             yield return new WaitForSeconds(7);
@@ -103,7 +110,7 @@ public class Monster : MonoBehaviour
 
     private void Appear() //Para que aparezca en los puntos q nos interesa
     {
-        transform.position = spawnZones[Random.Range(0, spawnZones.Length)].position;
+        transform.position = spawnZones[Random.Range(0, spawnZones.Length -1)].position;
         agent.enabled = true;
         agent.isStopped = false;
         hasToChase = true;
@@ -122,9 +129,5 @@ public class Monster : MonoBehaviour
         //agent.speed = maxSpeed;
     }
 
-    private void StartWalking() //Para después del stun o para cuando tenga que andar
-    {
-        agent.isStopped = false;
-    }
 
 }
