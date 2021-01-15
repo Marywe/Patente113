@@ -57,7 +57,7 @@ public class Monster : MonoBehaviour
             
         }
         else if (!hasToChase && !disappearToAppear) { //pa que no haga nada
-            Disappear();
+            
             disappearToAppear = true;
         }
     }
@@ -75,7 +75,6 @@ public class Monster : MonoBehaviour
 
         //Stun
         hasToChase = false;
-
         StartCoroutine(Disappear());
 
         //Cambia vel
