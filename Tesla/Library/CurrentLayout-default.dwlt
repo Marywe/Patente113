@@ -21,7 +21,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: Project
   m_RootView: {fileID: 4}
-  m_MinSize: {x: 875, y: 300}
+  m_MinSize: {x: 875, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 1
 --- !u!114 &2
@@ -92,7 +92,7 @@ MonoBehaviour:
     y: 0
     width: 1920
     height: 997
-  m_MinSize: {x: 875, y: 300}
+  m_MinSize: {x: 875, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &5
 MonoBehaviour:
@@ -161,7 +161,7 @@ MonoBehaviour:
   m_MinSize: {x: 679, y: 492}
   m_MaxSize: {x: 14002, y: 14042}
   vertical: 0
-  controlID: 148
+  controlID: 124
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -186,7 +186,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 492}
   m_MaxSize: {x: 10001, y: 14042}
   vertical: 1
-  controlID: 62
+  controlID: 47
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -211,7 +211,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 221}
   m_MaxSize: {x: 8003, y: 4021}
   vertical: 0
-  controlID: 63
+  controlID: 48
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -229,7 +229,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 297
+    width: 300
     height: 671
   m_MinSize: {x: 201, y: 221}
   m_MaxSize: {x: 4001, y: 4021}
@@ -253,9 +253,9 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 297
+    x: 300
     y: 0
-    width: 1202
+    width: 1199
     height: 671
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
@@ -265,7 +265,7 @@ MonoBehaviour:
   - {fileID: 14}
   - {fileID: 16}
   m_Selected: 0
-  m_LastSelected: 2
+  m_LastSelected: 1
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -345,9 +345,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 297
+    x: 300
     y: 73
-    width: 1200
+    width: 1197
     height: 650
   m_ViewDataDictionary: {fileID: 0}
 --- !u!114 &15
@@ -397,9 +397,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 297
+    x: 300
     y: 73
-    width: 1200
+    width: 1197
     height: 650
   m_ViewDataDictionary: {fileID: 0}
   m_SerializedViewNames: []
@@ -435,9 +435,9 @@ MonoBehaviour:
     m_VAllowExceedBaseRangeMax: 1
     m_ScaleWithWindow: 0
     m_HSlider: 0
-    m_VSlider: 0
+    m_VSlider: 1
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 0
+    m_EnableMouseInput: 1
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -446,23 +446,23 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 21
-      width: 1200
+      width: 1197
       height: 629
-    m_Scale: {x: 1, y: 1}
-    m_Translation: {x: 600, y: 314.5}
+    m_Scale: {x: 1.0532857, y: 1.0532857}
+    m_Translation: {x: 598.5, y: 331.25836}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -600
+      x: -568.22186
       y: -314.5
-      width: 1200
-      height: 629
+      width: 1136.4437
+      height: 597.1789
     m_MinimalGUI: 1
   m_defaultScale: 1
-  m_LastWindowPixelSize: {x: 1200, y: 650}
+  m_LastWindowPixelSize: {x: 1197, y: 650}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000001000000000000
@@ -491,26 +491,26 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 73
-    width: 296
+    width: 299
     height: 650
   m_ViewDataDictionary: {fileID: 0}
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 0}
+      scrollPos: {x: 0, y: 14427}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 563ef1fffe46f1ff5aa9f1ffe24df7ff565af7ff20aef7ff88cdf8ff524afaff9e76faff4a26fbffbcc9ffffd6c9ffff20e3ffff5ce7ffffc4e8ffff9aebffffd2efffff6af3ffffa6faffff8c3500008e3700005c38000052390000de3900008e3a00008c3c0000ac3c0000723d0000c03e0000d03f0000404000005e400000b0410000884200009a4200005e430000ba43000060440000824400001e450000e84500000249000044490000fc4a0000b64b00004e4c0000b4530000385400004c540000c4540000d45400002a5500007c56000058590000
+      m_ExpandedIDs: 30d6ffff90e4ffff6aedffff10fbffff683900007a390000ca3e000096440000d84500000e460000f4480000f84900000e4a00009a4c0000ae4d00001e4e000096510000e0520000e2550000ec590000925a0000a85d000094600000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: TECHO 2ND (1)
-        m_OriginalName: TECHO 2ND (1)
+        m_Name: Player
+        m_OriginalName: Player
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: -6498
+        m_UserData: 16446
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
         m_OriginalEventType: 0
@@ -544,9 +544,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 297
+    x: 300
     y: 73
-    width: 1200
+    width: 1197
     height: 650
   m_ViewDataDictionary: {fileID: 0}
   m_ShowContextualTools: 0
@@ -559,9 +559,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 14.072044, y: 44.779533, z: -30.350029}
+    m_Target: {x: -70.299835, y: 35.056503, z: -60.93196}
     speed: 2
-    m_Value: {x: 14.072044, y: 44.779533, z: -30.350029}
+    m_Value: {x: -70.299835, y: 35.056503, z: -60.93196}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -607,13 +607,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.22333701, y: 0.73103905, z: -0.28144082, w: -0.5801028}
+    m_Target: {x: 0.020431988, y: 0.97717196, z: -0.110392824, w: 0.1805507}
     speed: 2
-    m_Value: {x: -0.22375605, y: 0.7301587, z: -0.2811019, w: -0.5811912}
+    m_Value: {x: 0.019997088, y: 0.9775733, z: -0.10895339, w: 0.17910887}
   m_Size:
-    m_Target: 42.45775
+    m_Target: 45.854378
     speed: 2
-    m_Value: 40.629425
+    m_Value: 43.879787
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -677,20 +677,20 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Majo y Susana/Sci-Fi Styled Modular Pack/Prefabs/Decorative elements
+    - Assets/Majo y Susana/Horror Hospital Pack/Materials/Sil
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Majo y Susana/Sci-Fi Styled Modular Pack/Prefabs/Decorative elements
+  - Assets/Majo y Susana/Horror Hospital Pack/Materials/Sil
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Usuario\Documents\Patente113\Tesla
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 629}
-    m_SelectedIDs: 6c870000
-    m_LastClickedID: 34668
-    m_ExpandedIDs: 00000000b67000009c710000187200002072000022720000267200008e790000128200005a8700006c8700000e8800002e88000000ca9a3b
+    scrollPos: {x: 0, y: 159}
+    m_SelectedIDs: 22770000
+    m_LastClickedID: 30498
+    m_ExpandedIDs: 0000000030750000147600002c7600002e760000347600004a760000087700002286000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -718,7 +718,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000b6700000
+    m_ExpandedIDs: 0000000030750000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
