@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameAssets : MonoBehaviour
 {
@@ -25,6 +26,13 @@ public class GameAssets : MonoBehaviour
 
     public Material lightMaterialOn;
     public Material lightMaterialOnVisor;
+
+   
+
+    public void ReloadScene() 
+    {
+        SceneManager.LoadScene(1);
+    }
 
 
     //---------------------------------------------------------Biblioteca de sonido-------------------------------------------------------------------------------------------//
