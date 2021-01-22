@@ -43,18 +43,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d177f3663b1a6674880fa23b737ff57f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 5914302218205031160, guid: 3e0d4ef54d41f0c42bc5e9a5ee21cf93, type: 3}
-  climbText: {fileID: 2784669354097163329, guid: 3ae807599ee569848aa977fba136a0d2,
-    type: 3}
   lightMaterialOn: {fileID: 2100000, guid: 0856ddf4a6419d9489b93fd9a4cbe5b8, type: 2}
   lightMaterialOnVisor: {fileID: 2100000, guid: 6363722fe6ae5314aa4a5569864d0e37,
     type: 2}
   soundAudioClipCollection:
   - sound: 0
-    audioClip: {fileID: 8300000, guid: c4096d42843e39e46a3bca51a848ea4b, type: 3}
+    audioClip: {fileID: 8300000, guid: 6b039448c440dd74299906f8f3a2b8af, type: 3}
   - sound: 1
-    audioClip: {fileID: 8300000, guid: 21bf19f1e8a21734aa552ad2fbbfdd9d, type: 3}
+    audioClip: {fileID: 8300000, guid: c4096d42843e39e46a3bca51a848ea4b, type: 3}
   - sound: 2
     audioClip: {fileID: 8300000, guid: d7e536ec09947fc4cac4abe47c535fb9, type: 3}
   - sound: 3
-    audioClip: {fileID: 8300000, guid: b2473c3d8f2af5949a9eab320d0681ca, type: 3}
+    audioClip: {fileID: 8300000, guid: b26c9cf976402e247b1bc1194d680ab0, type: 3}
+  - sound: 4
+    audioClip: {fileID: 8300000, guid: 4b50f18b734c10947b98d835c7d30402, type: 3}
+  - sound: 5
+    audioClip: {fileID: 8300000, guid: 486db26d7da966c40b50a90e7479bfe5, type: 3}
+  - sound: 7
+    audioClip: {fileID: 8300000, guid: ed31e31277fd9ab418a404f24d11c9a1, type: 3}
+  - sound: 6
+    audioClip: {fileID: 8300000, guid: 33ac537ac3134294cb8bd6985686fdf9, type: 3}
+  - sound: 8
+    audioClip: {fileID: 8300000, guid: a8fe50b7694cec54988c3ee557f9588c, type: 3}

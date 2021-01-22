@@ -11,16 +11,15 @@ public class MenuManager : MonoBehaviour
     private GameObject LoadingScreen;
     [SerializeField]
     private Slider loadingPorcentaje; // O esto o un texto que ponga el porcentaje de carga
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+
+    bool reproduciendoMusic = false;
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (!reproduciendoMusic) StartCoroutine(loopMusicMenu());
+        // Soy puto retrasado y he metido 2 variables no estáticas en el código que gestiona cuando loopea la música, así que hago este apaño para poder loopear desde el menú, zorry
+
     }
 
     public void PlayGame(string Scene)
@@ -47,5 +46,14 @@ public class MenuManager : MonoBehaviour
     {
         Debug.Log("Saliendo del juego");
         Application.Quit();
+    }
+
+    private IEnumerator loopMusicMenu()
+    {
+        reproduciendoMusic = true;
+        SoundManager.PlaySound(SoundManager.Sound.HorrorAmbientMenu);
+        yield return new WaitForSeconds(89.0f); // Duración en segundos de la canción (esta dura 91, pero queda mejor si loopea en el 89 pq los 2s del final están super bajitos)   
+        reproduciendoMusic = false;
+        StopCoroutine(loopMusicMenu());
     }
 }

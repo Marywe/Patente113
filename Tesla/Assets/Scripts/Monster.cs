@@ -5,7 +5,19 @@ using UnityEngine.AI;
 
 public class Monster : MonoBehaviour
 {
-   
+    //AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBBBBBBBBBBBBBBBBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+    //AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBAAAAAAAAAAAAAAAAABBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+    //AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBAAAAAOAAAAAAAAOAAAAAABBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+    //AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBAAAAAAAAAWWAAAAAAAAAABBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+    //AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBBBBBBBBBBBBBBBBBBBBBBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+    //Ahora que tengo tu atención, nuevos sonidos que imagino que irán asociados al enemigo:
+    // Romper cristal:                                                                                              SoundManager.PlaySound(SoundManager.Sound.BrokenGlass, transform.position);
+    // Encontrarse al enemigo:                                                                                      SoundManager.PlaySound(SoundManager.Sound.EnemEncounter, transform.position);
+    // Chirrido (este no es del enemigo pero meh, ya lo pongo aquí):                                                SoundManager.PlaySound(SoundManager.Sound.Screech, transform.position);
+    // Perseguir al player (este se repite cada 7s, así que lo puedes poner en una función que vaya en el update):  SoundManager.PlaySound(SoundManager.Sound.ChasingPlayer, transform.position);
+    // Si borras las position se reproducirán en 2D (se oirán iwal independientemente de la posición)
+
+
     //[SerializeField]
     //[Range(2, 8)]
     //private float maxSpeed;
@@ -13,7 +25,7 @@ public class Monster : MonoBehaviour
     //[Range(0, 5)]
     //private float dmgSpeed;
 
-   
+
     [SerializeField]
     private Transform target;
     private Player targetScript;
@@ -36,6 +48,8 @@ public class Monster : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+
+       
     }
     // Start is called before the first frame update
     void Start()
@@ -88,7 +102,7 @@ public class Monster : MonoBehaviour
   
     private void Atacar()
     {
-        targetScript.GetHit();
+        targetScript.GetDamage();
 
         //animación atacar
     }

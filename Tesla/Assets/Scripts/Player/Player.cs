@@ -36,6 +36,8 @@ public class Player : MonoBehaviour
 
     public  Vector3 initialPos;
     public  Quaternion rotation;
+
+
     private void Awake()
     {
        
@@ -43,10 +45,12 @@ public class Player : MonoBehaviour
         animator = gameObject.GetComponent<Animator>();
         currentLife = maxLife;
         setBlood(0);
+        StartCoroutine(spawnSound());
+
     }
 
 
-    public void GetHit()
+    public void GetDamage()
     {
         --currentLife;
         StartCoroutine(playerRegen(secondsToRecoverLife));
@@ -73,8 +77,6 @@ public class Player : MonoBehaviour
     }
 
     public RawImage bloodUI;
-
-
     void setBlood(byte alpha, byte red = 175)
     {
         bloodUI.color = new Color32(red, 0, 0, alpha);
@@ -102,6 +104,13 @@ public class Player : MonoBehaviour
         setBlood(0);
         firstPersonController.m_WalkSpeed = 8f;
         if (currentLife >= maxLife) StopCoroutine(playerRegen(secs));
+    }
+
+    private IEnumerator spawnSound()
+    {
+        yield return new WaitForSeconds(2);
+        SoundManager.PlaySound(SoundManager.Sound.Spawn, transform.position);
+        StopCoroutine(spawnSound());
     }
 
     //bool unaVez = false; // Solo sirve para probar recibir daño

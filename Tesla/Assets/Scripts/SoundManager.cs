@@ -9,6 +9,12 @@ public static class SoundManager
         ElectricShoot,
         LightOn,
         EnemyHitted,
+        Screech,
+        EnemEncounter,
+        BrokenGlass,
+        Spawn,
+        ChasingPlayer,
+        HorrorAmbientMenu,
         TestSoundCannotLoop, // Sonido de prueba que no se puede repetir a menos que hayan pasado 5s
     }
 
@@ -67,16 +73,22 @@ public static class SoundManager
     //------------------------------------------------------------------Gestión de repetición de sonidos en el tiempo-------------------------------------------------------------------------------------------//
 
 
+  
+
     private static Dictionary<Sound, float> soundTimerDictionary; // Almacena el sonido y el timer que tiene que tiene que esperar para repetirse
 
     public static void InitializeDictionary() // Inicializa el dictionary (recuerda que en el dictionary solo se guardan sonidos que tengan timer para no poder repetirse)
     {
-       soundTimerDictionary = new Dictionary<Sound, float>(); 
-       soundTimerDictionary[Sound.TestSoundCannotLoop] = 0f; 
+       soundTimerDictionary = new Dictionary<Sound, float>();
+        soundTimerDictionary[Sound.ChasingPlayer] = 0f;
+        soundTimerDictionary[Sound.HorrorAmbientMenu] = 0f;
+        soundTimerDictionary[Sound.TestSoundCannotLoop] = 0f; 
     }
 
     private static bool CanPlaySound(Sound sound) // Establece intervalos de tiempo para que sonidos que se repiten no lo hagan 1 vez por frame
     {
+        float lastTimePlayed;
+        float playerMoveTimerMax;
         switch (sound)
         {
             default: return true; // Para cualquier sonido que no se repita simplemente devuelve true
@@ -84,26 +96,53 @@ public static class SoundManager
             
             // en el caso de un sonido que se ejecute en una función dentro de un update (por ejemplo el sonido de pasos al andar si no viniesen ya en el asset),
             // este switch comprueba que el timer para repetirse no ha finalizado y le impide reproducir el audio clip
-            case Sound.TestSoundCannotLoop: 
-                if (soundTimerDictionary.ContainsKey(sound))
+            case Sound.ChasingPlayer:
                 {
-                    float lastTimePlayed = soundTimerDictionary[sound];
-                    float playerMoveTimerMax = 5f; // solo se puede repetir tras 5s
-
-                    if(lastTimePlayed + playerMoveTimerMax < Time.time)
+                    if (soundTimerDictionary.ContainsKey(sound))
                     {
-                        soundTimerDictionary[sound] = Time.time;
+                        lastTimePlayed = soundTimerDictionary[sound];
+                        playerMoveTimerMax = 7f; // solo se puede repetir tras 7s
+
+                        if (lastTimePlayed + playerMoveTimerMax < Time.time)
+                        {
+                            soundTimerDictionary[sound] = Time.time;
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                    else // Si en el diccionario no hay un timer asociado para él es que se puede repetir
+                    {
                         return true;
                     }
-                    else
-                    {
-                        return false;
-                    }
+                    //break;
                 }
-                else // Si en el diccionario no hay un timer asociado para él es que se puede repetir
-                {
-                    return true;
-                }
+            //case Sound.HorrorAmbientMenu:
+            //    {
+            //        if (soundTimerDictionary.ContainsKey(sound))
+            //        {
+            //            lastTimePlayed = soundTimerDictionary[sound];
+            //            playerMoveTimerMax = 77f; // solo se puede repetir tras 77s (duración de la canción)
+            //
+            //            if (lastTimePlayed + playerMoveTimerMax < Time.time)
+            //            {
+            //                soundTimerDictionary[sound] = Time.time;
+            //                return true;
+            //            }
+            //            else
+            //            {
+            //                return false;
+            //            }
+            //        }
+            //        else // Si en el diccionario no hay un timer asociado para él es que se puede repetir
+            //        {
+            //            return true;
+            //        }
+            //        break;
+            //    }
+                
         } 
     }
 }

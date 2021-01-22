@@ -44,6 +44,7 @@ public class Weapon : MonoBehaviour
     private CharacterController characterController;
     [SerializeField] private Animator anim;
 
+    [SerializeField] private Material visorMaterial;
     [SerializeField] private GameObject visor;
     [SerializeField] private Light weaponLight;
 
@@ -51,8 +52,11 @@ public class Weapon : MonoBehaviour
     private void Start()
     {
         this.gameObject.SetActive(weaponObtained);
+        //visorMaterial = visor.GetComponent<Material>();
+        visor.SetActive(true);
+        visorMaterial.color = new Color32(255, 255, 255, 255);
 
-        
+
     }
 
     private void Awake()
@@ -139,16 +143,17 @@ public class Weapon : MonoBehaviour
 
     private IEnumerator turnOffVisor()
     {
-        yield return new WaitForSeconds(0.05f);
-        visor.SetActive(false);
         yield return new WaitForSeconds(0.1f);
-        visor.SetActive(true);
+        visorMaterial.color = new Color32(255, 255, 255, 191);
         yield return new WaitForSeconds(0.1f);
-        visor.SetActive(false);
+        visorMaterial.color = new Color32(255, 255, 255, 127);
+        yield return new WaitForSeconds(0.1f);
+        visorMaterial.color = new Color32(255, 255, 255, 63);
+        yield return new WaitForSeconds(0.1f);
+        visorMaterial.color = new Color32(255, 255, 255, 0);
         yield return new WaitForSeconds(0.05f);
-        visor.SetActive(true);
-        yield return new WaitForSeconds(0.05f);
         visor.SetActive(false);
+
 
         if (!rechargeTextReaded)
         {
@@ -159,19 +164,35 @@ public class Weapon : MonoBehaviour
         visorOn = false;
     }
 
+    private IEnumerator turnOnVisor()
+    {
+        visorMaterial.color = new Color32(255, 255, 255, 0);
+        visor.SetActive(true);
+
+        yield return new WaitForSeconds(0.1f);
+        visorMaterial.color = new Color32(255, 255, 255, 63);
+        yield return new WaitForSeconds(0.1f);
+        visorMaterial.color = new Color32(255, 255, 255, 91);
+        yield return new WaitForSeconds(0.1f);
+        visorMaterial.color = new Color32(255, 255, 255, 127);
+        yield return new WaitForSeconds(0.1f);
+        visorMaterial.color = new Color32(255, 255, 255, 255);
+        yield return new WaitForSeconds(0.05f);
+        StopCoroutine(turnOnVisor());
+    }
+
     private void TurnOn()
     {
         vueltasDadas = 0;
 
         GameManager.instance.rechargeText.SetActive(false);
-        visor.SetActive(true);
+
+        StartCoroutine(turnOnVisor());
         weaponLight.intensity = luzMaxArma;
 
         energy = maxEnergy;
         canShoot = true;
         visorOn = true;
-
-        //Encender pistola y visor
     }
     private IEnumerator Recharge()
     {
