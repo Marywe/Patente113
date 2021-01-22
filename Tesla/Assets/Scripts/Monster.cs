@@ -98,8 +98,8 @@ public class Monster : MonoBehaviour
         {
             if (GameManager.instance.triggerNum <= 1)
                 Appear(rndPos());
-            else if (GameManager.instance.triggerNum == 4) Appear(spawnZones[3].position);
-            else if (GameManager.instance.triggerNum == 5) Appear(spawnZones[4].position);
+            else if (GameManager.instance.triggerNum == 4) Appear(spawnZones[4].position);
+            else if (GameManager.instance.triggerNum == 5) Appear(spawnZones[5].position);
         }
     }
 
