@@ -39,31 +39,39 @@ public class GameManager : MonoBehaviour
         switch (triggerNum)
         {
             case 1:
-                StartCoroutine(StartHunt(true, true)); //laberinto
+                StartHunt(Monster.State.chase); //laberinto
+                monster.Appear(monster.transform.position);
                 break;
 
             case 2:
-                StartCoroutine(StartHunt(false, false)); //sales del laberinto
+                StartHunt(Monster.State.notAtSight);
+                monster.disappearToAppear = false; //sales del laberinto
                 break;
-
             case 3:
-                StartCoroutine(StartHunt(true, false)); //entras en la sala bífida
+                
+                StartHunt(Monster.State.observing); //entras en la sala bífida
+                monster.Appear(monster.spawnZones[3].position);
                 break;
             case 4:
-                StartCoroutine(StartHunt(false, false)); //sales de ella y desaparece
+                StartHunt(Monster.State.chase); //sales de ella y te sigue
+                monster.Appear(monster.spawnZones[4].position);
+                monster.disappearToAppear = true;
+                break;
+            case 5:
+                StartHunt(Monster.State.notAtSight); //subes ascensor
+                break;
+            case 6:
+                StartHunt(Monster.State.chase);
+                monster.Appear(monster.spawnZones[5].position);//arriba del ascnsor
                 break;
 
         }
     }
 
-    private IEnumerator StartHunt(bool hasToChase, bool disToApp)
-    {       
-        yield return new WaitForSeconds(2);
-
-        //open door (soniditos tal cual)
-        monster.hasToChase = hasToChase;
-        monster.disappearToAppear = disToApp;
-        if (!hasToChase) monster.Disappear();
+    private void StartHunt(Monster.State _state)
+    {
+        monster.state = _state;
+        monster.done = false;
     }
 
 

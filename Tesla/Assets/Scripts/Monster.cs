@@ -5,11 +5,6 @@ using UnityEngine.AI;
 
 public class Monster : MonoBehaviour
 {
-    //AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBBBBBBBBBBBBBBBBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-    //AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBAAAAAAAAAAAAAAAAABBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-    //AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBAAAAAOAAAAAAAAOAAAAAABBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-    //AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBAAAAAAAAAWWAAAAAAAAAABBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-    //AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBBBBBBBBBBBBBBBBBBBBBBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
     //Ahora que tengo tu atención, nuevos sonidos que imagino que irán asociados al enemigo:
     // Romper cristal:                                                                                              SoundManager.PlaySound(SoundManager.Sound.BrokenGlass, transform.position);
     // Encontrarse al enemigo:                                                                                      SoundManager.PlaySound(SoundManager.Sound.EnemEncounter, transform.position);
@@ -26,6 +21,11 @@ public class Monster : MonoBehaviour
     //private float dmgSpeed;
 
 
+    public enum State { chase, notAtSight,  observing};
+    public State state;
+
+    public bool done = false;
+
     [SerializeField]
     private Transform target;
     private Player targetScript;
@@ -33,22 +33,20 @@ public class Monster : MonoBehaviour
     private NavMeshAgent agent;
     private Animator animator;
 
-    public bool hasToChase = false;
-
     [SerializeField]
     private float recoveryTime;
 
-    [SerializeField]
-    private Transform[] spawnZones;
+ 
+    public Transform[] spawnZones; //las 3 primeras son rnd, la 3 es sala bifida, la 4 escaleras, la 5 arriba
     public Transform despawnPoint;
 
+    public bool disappearToAppear = true;
 
-    public bool disappearToAppear=true;
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-
+        state = Monster.State.observing;
        
     }
     // Start is called before the first frame update
@@ -60,20 +58,10 @@ public class Monster : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (hasToChase && disappearToAppear) Chase();
-        else if (hasToChase && !disappearToAppear)
-        {
-            //spawn en sitio
-            if (GameManager.instance.triggerNum == 3)
-            {
-                transform.position = spawnZones[3].position;
-            }
-            
-        }
-        else if (!hasToChase && !disappearToAppear) { //pa que no haga nada
-            
-            disappearToAppear = true;
-        }
+        if (state == State.observing && !done) Stay();
+        else if (state == State.chase) Chase();
+        else if (state == State.notAtSight && !done) StartCoroutine(Disappear());
+        
     }
 
     private void Chase()
@@ -87,17 +75,9 @@ public class Monster : MonoBehaviour
         // SoundManager.PlaySound(SoundManager.Sound.LightOn);
         // Descomenta para sentir en tus carnes como dos audios se reproducen a la vez
 
-        //Stun
-        hasToChase = false;
         StartCoroutine(Disappear());
 
-        //Cambia vel
-        //agent.speed = dmgSpeed;
-
         //anim dmg
-
-        //Se recupera al x tiempo
-        //StartCoroutine(Recover());
     }
   
     private void Atacar()
@@ -109,24 +89,32 @@ public class Monster : MonoBehaviour
 
     public IEnumerator Disappear()
     {
-        agent.isStopped = true;
-        agent.enabled = false;
-        yield return new WaitForSeconds(3);
-        
+        Stay();
+        yield return new WaitForSeconds(1);        
         transform.position = despawnPoint.position;
+
+        yield return new WaitForSeconds(5);
         if (disappearToAppear)
         {
-            yield return new WaitForSeconds(7);
-            Appear();
+            if (GameManager.instance.triggerNum <= 1)
+                Appear(rndPos());
+            else if (GameManager.instance.triggerNum == 4) Appear(spawnZones[3].position);
+            else if (GameManager.instance.triggerNum == 5) Appear(spawnZones[4].position);
         }
     }
 
-    private void Appear() //Para que aparezca en los puntos q nos interesa
+    private void Stay()
     {
-        transform.position = spawnZones[Random.Range(0, spawnZones.Length -1)].position;
+        agent.isStopped = true;
+        agent.enabled = false;
+        done = true;
+    }
+
+    public void Appear(Vector3 pos) //Para que aparezca en los puntos q nos interesa
+    {
+        transform.position = pos;
         agent.enabled = true;
         agent.isStopped = false;
-        hasToChase = true;
     }
 
     public void RayTargetHit() //la función que llama la weapon
@@ -134,12 +122,9 @@ public class Monster : MonoBehaviour
         GetHit();
     }
 
-
-    //Deprefukincapted
-    private IEnumerator Recover()
+    private Vector3 rndPos()
     {
-        yield return new WaitForSeconds(recoveryTime);
-        //agent.speed = maxSpeed;
+        return spawnZones[Random.Range(0, 3)].position; 
     }
 
 
