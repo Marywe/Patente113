@@ -199,12 +199,17 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "CogerArma")
-        {
-            GetDamage();
-
+        {  
             Destroy(other.gameObject);
             weapon.Activate();
             weapon.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>().Stop();
+        }
+
+        if (other.tag == "AbrirAscensor")
+        {
+           Door d = other.GetComponent<Door>();
+            weapon.Deactivate();
+            d.Open();
         }
     }
 

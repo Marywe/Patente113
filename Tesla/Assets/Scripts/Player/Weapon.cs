@@ -247,6 +247,12 @@ public class Weapon : MonoBehaviour
         this.gameObject.SetActive(true);
     }
 
+    public void Deactivate()
+    {
+        //SoundManager.PlaySound(SoundManager.Sound.ElectricShoot);
+        this.gameObject.SetActive(false);
+    }
+
     public void SetCanShoot(bool algo)
     {
         if(algo!=false && energy!=0 && canShoot==false)

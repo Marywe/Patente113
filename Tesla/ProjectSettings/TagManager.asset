@@ -9,6 +9,7 @@ TagManager:
   - Puerta
   - Botiquin
   - CogerArma
+  - AbrirAscensor
   layers:
   - Default
   - TransparentFX
