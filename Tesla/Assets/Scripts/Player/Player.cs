@@ -183,7 +183,9 @@ public class Player : MonoBehaviour
 
 }
 
+
 #region Botón //Desactivar cuando se saque build
+#if UNITY_EDITOR
 [CustomEditor(typeof(Player))]
 public class MyEditor : Editor
 {
@@ -199,5 +201,6 @@ public class MyEditor : Editor
     }
 
 }
+#endif
 #endregion
 
