@@ -44,10 +44,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 947
-  m_MinSize: {x: 678, y: 492}
+  m_MinSize: {x: 677, y: 492}
   m_MaxSize: {x: 14001, y: 14042}
   vertical: 1
-  controlID: 117
+  controlID: 122
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -182,10 +182,10 @@ MonoBehaviour:
     y: 0
     width: 1920
     height: 947
-  m_MinSize: {x: 678, y: 492}
+  m_MinSize: {x: 677, y: 492}
   m_MaxSize: {x: 14001, y: 14042}
   vertical: 0
-  controlID: 118
+  controlID: 123
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -207,7 +207,7 @@ MonoBehaviour:
     y: 0
     width: 1498
     height: 947
-  m_MinSize: {x: 403, y: 492}
+  m_MinSize: {x: 402, y: 492}
   m_MaxSize: {x: 10001, y: 14042}
   vertical: 1
   controlID: 124
@@ -232,8 +232,8 @@ MonoBehaviour:
     y: 0
     width: 1498
     height: 594
-  m_MinSize: {x: 403, y: 221}
-  m_MaxSize: {x: 8003, y: 4021}
+  m_MinSize: {x: 402, y: 221}
+  m_MaxSize: {x: 8002, y: 4021}
   vertical: 0
   controlID: 125
 --- !u!114 &11
@@ -255,8 +255,8 @@ MonoBehaviour:
     y: 0
     width: 216
     height: 594
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -318,7 +318,7 @@ MonoBehaviour:
   - {fileID: 21}
   - {fileID: 22}
   m_Selected: 0
-  m_LastSelected: 1
+  m_LastSelected: 2
 --- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -409,7 +409,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 1
+    m_EnableMouseInput: 0
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -469,23 +469,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: 5ee4ffff10fbffff043a0000d44000008c450000444600005a4600002848000076490000ba4900004c4e0000f64e000094500000d8500000465200009c5300003a5600009c5a0000285b0000425b0000745c0000d05c0000505e00003c610000
+      m_SelectedIDs: cad40000
+      m_LastClickedID: 54474
+      m_ExpandedIDs: 0437fdffcad400003adb0000d6dd000026e60000c8e600007aea0000f4ea0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: SM_Prop_ControlPanel_01
-        m_OriginalName: SM_Prop_ControlPanel_01
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: -52250
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 11}
       m_SearchString: 
@@ -531,9 +531,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -97.64135, y: 30.358213, z: -64.4341}
+    m_Target: {x: -55.27162, y: 6.3944864, z: 7.803894}
     speed: 2
-    m_Value: {x: -97.64135, y: 30.358213, z: -64.4341}
+    m_Value: {x: -55.27162, y: 6.3944864, z: 7.803894}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -579,13 +579,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.29560018, y: 0.4824442, z: -0.17741066, w: 0.80548704}
+    m_Target: {x: 0.079733536, y: 0.91936946, z: -0.2959021, w: 0.24754441}
     speed: 2
-    m_Value: {x: 0.2943307, y: 0.4826096, z: -0.17664963, w: 0.80576193}
+    m_Value: {x: 0.07971624, y: 0.91917, z: -0.2958379, w: 0.24749072}
   m_Size:
-    m_Target: 14.49384
+    m_Target: 1.9432176
     speed: 2
-    m_Value: 13.869703
+    m_Value: 1.9432176
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -675,20 +675,20 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Majo y Susana/HQ Rocks/Materials
+    - Assets
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Majo y Susana/HQ Rocks/Materials
+  - Assets
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\Users\Usuario\Documents\Patente113\Tesla
+  m_LastProjectPath: C:\Users\rexit\Documents\Unity Projects\Patente113\Tesla
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 79}
-    m_SelectedIDs: b81b0100
-    m_LastClickedID: 72632
-    m_ExpandedIDs: 000000002c760000367600004c760000687600006a7600004c7e0000b6860000b41b010000ca9a3b
+    scrollPos: {x: 0, y: 12}
+    m_SelectedIDs: 4a000100
+    m_LastClickedID: 65610
+    m_ExpandedIDs: 000000004a00010000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -716,7 +716,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000002c760000
+    m_ExpandedIDs: 000000004a000100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -743,7 +743,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c62300003841000000000000708a0000bc820b0084ac0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -820,13 +820,13 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 744
-    width: 1498
-    height: 255
+    y: 667
+    width: 1497
+    height: 332
   m_ViewDataDictionary: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 20650
+  m_LastSelectedObjectID: 54474
 --- !u!114 &22
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -849,23 +849,23 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 744
-    width: 1498
-    height: 255
+    y: 667
+    width: 1497
+    height: 332
   m_ViewDataDictionary: {fileID: 0}
   m_ViewTransforms:
     m_KeySerializationHelper:
     - {fileID: -4106556638921659743, guid: 621101f96a87c854590812f4335be861, type: 2}
     - {fileID: -8827655967336682155, guid: 167ab340d7e05d6478f498820213ff0e, type: 2}
     m_ValueSerializationHelper:
-    - e00: 0.12155519
+    - e00: 0.50796103
       e01: 0
       e02: 0
-      e03: 635.1283
+      e03: 411.76797
       e10: 0
-      e11: 0.12155519
+      e11: 0.50796103
       e12: 0
-      e13: 149.3651
+      e13: 218.42325
       e20: 0
       e21: 0
       e22: 1

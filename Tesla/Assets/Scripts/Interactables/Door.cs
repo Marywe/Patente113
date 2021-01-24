@@ -23,6 +23,7 @@ public class Door : MonoBehaviour
     }
     public void Open()
     {
+        SoundManager.PlaySound(SoundManager.Sound.OpenDoor, transform.position);
         isOpen = true;
         animator.SetBool("opening", isOpen);
     }

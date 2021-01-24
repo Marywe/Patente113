@@ -32,6 +32,8 @@ public class Player : MonoBehaviour
     private bool isClimbing;
 
     [SerializeField] private GameObject deathScreen;
+    [SerializeField] private GameObject deathText;
+    private Image screenMuerte;
     
 
     public  Vector3 initialPos;
@@ -43,9 +45,11 @@ public class Player : MonoBehaviour
        
         firstPersonController = gameObject.GetComponent<FirstPersonController>();
         animator = gameObject.GetComponent<Animator>();
+        screenMuerte = deathScreen.GetComponent<Image>();
         currentLife = maxLife;
         setBlood(0);
         StartCoroutine(spawnSound());
+
 
     }
 
@@ -53,6 +57,8 @@ public class Player : MonoBehaviour
     public void GetDamage()
     {
         --currentLife;
+        SoundManager.PlaySound(SoundManager.Sound.PlayerGetHit, transform.position);
+
         StartCoroutine(playerRegen(secondsToRecoverLife));
 
         switch (currentLife) 
@@ -66,7 +72,6 @@ public class Player : MonoBehaviour
                 break;
 
             case 0:
-                deathScreen.SetActive(true);
                 StartCoroutine(playerDeath());
                 break;
         }
@@ -83,8 +88,29 @@ public class Player : MonoBehaviour
 
     }
 
+
     private IEnumerator playerDeath()
     {
+        firstPersonController.m_WalkSpeed = 0;
+        firstPersonController.canMove = false;
+        weapon.canShoot = false;
+
+        animator.SetTrigger("ceMurio");
+
+        screenMuerte.color = new Color32(0, 0, 0, 0);
+        deathScreen.SetActive(true);
+
+        yield return new WaitForSeconds(0.4f);
+        screenMuerte.color = new Color32(0, 0, 0, 63);
+        yield return new WaitForSeconds(0.4f);
+        screenMuerte.color = new Color32(0, 0, 0, 91);
+        yield return new WaitForSeconds(0.4f);
+        screenMuerte.color = new Color32(0, 0, 0, 127);
+        yield return new WaitForSeconds(0.4f);
+        screenMuerte.color = new Color32(0, 0, 0, 255);
+        yield return new WaitForSeconds(0.2f);
+        deathText.SetActive(true);
+
 
         yield return new WaitForSeconds(3.0f);
         GameAssets.instance.ReloadScene();
@@ -118,7 +144,7 @@ public class Player : MonoBehaviour
     {
         //if (!unaVez) // Solo sirve para probar recibir daño
         //{
-        //    GetHit();
+        //    GetDamage();
         //    unaVez = true;
         //}
        
@@ -142,7 +168,7 @@ public class Player : MonoBehaviour
     {
         //if (!otraVez)// Solo sirve para probar recibir daño
         //{
-        //    GetHit();
+        //    GetDamage();
         //    otraVez = true;
         //}
         //animator.applyRootMotion = false;
@@ -174,6 +200,7 @@ public class Player : MonoBehaviour
     {
         if (other.tag == "CogerArma")
         {
+            GetDamage();
 
             Destroy(other.gameObject);
             weapon.Activate();

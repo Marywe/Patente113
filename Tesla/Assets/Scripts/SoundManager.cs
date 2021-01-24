@@ -13,8 +13,11 @@ public static class SoundManager
         EnemEncounter,
         BrokenGlass,
         Spawn,
-        ChasingPlayer,
         HorrorAmbientMenu,
+        ChasingPlayer,
+        PlayerGetHit,
+        OpenDoor,
+        LightOnLoop,
         TestSoundCannotLoop, // Sonido de prueba que no se puede repetir a menos que hayan pasado 5s
     }
 

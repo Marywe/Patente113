@@ -98,12 +98,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_MoveDir.z = desiredMove.z*speed;
 
 
-            if (m_CharacterController.isGrounded && !climbing)
+            if (m_CharacterController.isGrounded && !climbing && canMove)
             {
                 m_MoveDir.y = -m_StickToGroundForce;
 
             }
-            else if(!climbing)
+            else if(!climbing && canMove)
             {
                 m_MoveDir += Physics.gravity*m_GravityMultiplier*Time.fixedDeltaTime;
             }
@@ -161,7 +161,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             m_NextStep = m_StepCycle + m_StepInterval;
 
-            PlayFootStepAudio();
+            if(canMove)PlayFootStepAudio();
         }
 
 

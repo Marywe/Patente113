@@ -33,7 +33,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] private float luzMaxArma = 0.7f; // Intensidades de la luz que emite el player
     [SerializeField] private float luzMinArma = 0.3f;
 
-    private bool canShoot = true;
+    public bool canShoot = true;
     private bool visorOn = true;
     private int failShoots = 0;
     private int vueltasDadas = 0;
