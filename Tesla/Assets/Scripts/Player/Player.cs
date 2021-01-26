@@ -67,7 +67,7 @@ public class Player : MonoBehaviour
                 firstPersonController.m_WalkSpeed = 6f;
                 break;
 
-            case 1: setBlood(255, 210);
+            case 1: setBlood(255, 170);
                 firstPersonController.m_WalkSpeed = 4f;
                 break;
 
@@ -82,7 +82,7 @@ public class Player : MonoBehaviour
     }
 
     public RawImage bloodUI;
-    void setBlood(byte alpha, byte red = 175)
+    void setBlood(byte alpha, byte red = 135)
     {
         bloodUI.color = new Color32(red, 0, 0, alpha);
 

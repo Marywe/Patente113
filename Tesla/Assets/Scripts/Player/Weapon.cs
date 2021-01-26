@@ -7,28 +7,12 @@ using UnityStandardAssets.Characters.FirstPerson;
 
 public class Weapon : MonoBehaviour
 {
-    //    ARMA(tier 1)
-    //Atributos:
-    //Num disparos(energía)
-    //N vueltas para manivela(3)
-    //Puede disparar(entre dos paredes y escalera no)
-
-    //Acciones:
-    //Disparar(camera shake, particulas on, -energía)
-    //Luces(se encienden)
-    //Monstruo(animacion de herido, le realentiza)
-    //Tubería
-    //Recargar(dar vueltas con el ratón, wasd)
-    //Apagarse(si no tiene energía dep visor ni luz q emita)
-    //Encenderse(después de recargar, visor encendido luz encendida)
-    //Subir arma(no se puede usar, subes hacia arriba, no se ve)
 
     [SerializeField] private bool weaponObtained = false;
     [SerializeField] private int maxEnergy = 3;
     [SerializeField] private int energy = 3;
     [SerializeField] private int numVueltas = 13; // Muy importante, el numero de vueltas siempre tiene que ser 4 * n + 1 (siendo n la cantidad de giros de 360º que quieres) Ej: 13 = 3 vueltas (4*3+1)
     [SerializeField] private float shootLongitude = 25f;
-    [SerializeField] private float timeDrawingRaycast = 10f;
 
     [SerializeField] private float luzMaxArma = 0.7f; // Intensidades de la luz que emite el player
     [SerializeField] private float luzMinArma = 0.3f;
@@ -97,11 +81,11 @@ public class Weapon : MonoBehaviour
 
         //Dibujar los Raycast en el editor durante timeDrawingRaycast segundos
 
-        Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootLongitude, Color.green, timeDrawingRaycast); // Dibujo de rayo hacia delante
-        Debug.DrawRay(Camera.main.transform.position, diagonalDch * shootLongitude, Color.green, timeDrawingRaycast);                   // Dibujo de rayo hacia delante-dcha
-        Debug.DrawRay(Camera.main.transform.position, diagonalIzq * shootLongitude, Color.green, timeDrawingRaycast);
-        Debug.DrawRay(Camera.main.transform.position, diagonalIzq2 * shootLongitude, Color.green, timeDrawingRaycast);
-        Debug.DrawRay(Camera.main.transform.position, diagonalDch2 * shootLongitude, Color.green, timeDrawingRaycast);
+        Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootLongitude, Color.green, 10); // Dibujo de rayo hacia delante
+        Debug.DrawRay(Camera.main.transform.position, diagonalDch * shootLongitude, Color.green, 10);                   // Dibujo de rayo hacia delante-dcha
+        Debug.DrawRay(Camera.main.transform.position, diagonalIzq * shootLongitude, Color.green, 10);
+        Debug.DrawRay(Camera.main.transform.position, diagonalIzq2 * shootLongitude, Color.green, 10);
+        Debug.DrawRay(Camera.main.transform.position, diagonalDch2 * shootLongitude, Color.green, 10);
 
         //Disparar los Raycast
 

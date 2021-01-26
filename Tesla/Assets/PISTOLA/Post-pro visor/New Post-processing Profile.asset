@@ -18,10 +18,10 @@ MonoBehaviour:
     value: 1
   minColor:
     overrideState: 1
-    value: {r: 0.011836951, g: 0.063367754, b: 0.13207549, a: 1}
+    value: {r: 0, g: 0.1836927, b: 0.4433962, a: 1}
   midColor:
     overrideState: 1
-    value: {r: 0.5990566, g: 0.6249239, b: 1, a: 1}
+    value: {r: 0.70679635, g: 0.6933962, b: 1, a: 1}
   maxColor:
     overrideState: 1
     value: {r: 1, g: 0, b: 0.010752678, a: 1}

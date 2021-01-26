@@ -42,6 +42,10 @@ public class Monster : MonoBehaviour
 
     public bool disappearToAppear = true;
 
+    [SerializeField]
+    private float attackTimer;
+    private bool canAttack = true;
+
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -59,14 +63,23 @@ public class Monster : MonoBehaviour
     void Update()
     {
         if (state == State.observing && !done) Stay();
-        else if (state == State.chase) Chase();
         else if (state == State.notAtSight && !done) StartCoroutine(Disappear());
+        else if (state == State.chase)
+        {
+            float distanceTarget = Vector3.Distance(transform.position, target.position);
+
+            if (distanceTarget > agent.stoppingDistance)
+                Chase();
+            else if(canAttack && distanceTarget <= agent.stoppingDistance)
+                Atacar();
+        }       
         
     }
 
     private void Chase()
     {
-        agent.SetDestination(target.position);
+        if(agent.isOnNavMesh)
+            agent.SetDestination(target.position);
     }
 
     private void GetHit() //cambia vel, ejecuta animación de hit
@@ -84,7 +97,17 @@ public class Monster : MonoBehaviour
     {
         targetScript.GetDamage();
 
+        StartCoroutine(attCor());
+        //reproducir sonido
+
         //animación atacar
+    }
+
+    IEnumerator attCor()
+    {
+        canAttack = false;
+        yield return new WaitForSeconds(attackTimer);
+        canAttack = true;
     }
 
     public IEnumerator Disappear()
