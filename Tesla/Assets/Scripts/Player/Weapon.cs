@@ -90,19 +90,18 @@ public class Weapon : MonoBehaviour
 
         //play camers shake 
 
-        Vector3 diagonalDch = (Camera.main.transform.forward + Camera.main.transform.right) / 2; // Angulo de 45 grados hacia la derecha del disparo
-        Vector3 diagonalIzq = (Camera.main.transform.forward + -Camera.main.transform.right) / 2; // Angulo de 45 grados hacia la izquierda del disparo
+        Vector3 diagonalDch = Vector3.Normalize((Camera.main.transform.forward + Camera.main.transform.right)) ; // Angulo de 45 grados hacia la derecha del disparo
+        Vector3 diagonalIzq = Vector3.Normalize((Camera.main.transform.forward + -Camera.main.transform.right)) ; // Angulo de 45 grados hacia la izquierda del disparo
+        Vector3 diagonalIzq2 = Vector3.Normalize((Camera.main.transform.forward + diagonalIzq)); //Angulo entre medias
+        Vector3 diagonalDch2 = Vector3.Normalize((Camera.main.transform.forward + diagonalDch)); //Angulo entre medias
 
         //Dibujar los Raycast en el editor durante timeDrawingRaycast segundos
 
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootLongitude, Color.green, timeDrawingRaycast); // Dibujo de rayo hacia delante
         Debug.DrawRay(Camera.main.transform.position, diagonalDch * shootLongitude, Color.green, timeDrawingRaycast);                   // Dibujo de rayo hacia delante-dcha
-        Debug.DrawRay(Camera.main.transform.position, diagonalIzq * shootLongitude, Color.green, timeDrawingRaycast);                   // Dibujo de rayo hacia delante-izq
-
-
-        //Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.right, Color.blue, 10000);    // Dibujo de rayo hacia dcha
-        //Debug.DrawRay(Camera.main.transform.position, -Camera.main.transform.right, Color.red, 10000);    // Dibujo de rayo hacia izq
-
+        Debug.DrawRay(Camera.main.transform.position, diagonalIzq * shootLongitude, Color.green, timeDrawingRaycast);
+        Debug.DrawRay(Camera.main.transform.position, diagonalIzq2 * shootLongitude, Color.green, timeDrawingRaycast);
+        Debug.DrawRay(Camera.main.transform.position, diagonalDch2 * shootLongitude, Color.green, timeDrawingRaycast);
 
         //Disparar los Raycast
 
@@ -110,8 +109,6 @@ public class Weapon : MonoBehaviour
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hit, shootLongitude))
         { // Dispara los 3 raycast (efecto de escopeta / cono)
             Debug.Log(hit.collider);
-            
-           
             hit.collider.SendMessage("RayTargetHit", SendMessageOptions.DontRequireReceiver);
             
             // Invoca a "public void RayTargetHit()" si esta se encuentra en algún script del gameobject contra el que colisionan los RayCast
@@ -125,6 +122,18 @@ public class Weapon : MonoBehaviour
             Debug.Log(hit2.collider);
             hit2.collider.SendMessage("RayTargetHit", SendMessageOptions.DontRequireReceiver);
         }
+        if (Physics.Raycast(Camera.main.transform.position, diagonalIzq2, out RaycastHit hit3, shootLongitude))
+        {
+            Debug.Log(hit3.collider);
+            hit3.collider.SendMessage("RayTargetHit", SendMessageOptions.DontRequireReceiver);
+        }
+        if (Physics.Raycast(Camera.main.transform.position, diagonalDch2, out RaycastHit hit4, shootLongitude))
+        {
+            Debug.Log(hit4.collider);
+            hit4.collider.SendMessage("RayTargetHit", SendMessageOptions.DontRequireReceiver);
+        }
+
+
 
         shootPartycle.Play();
         --energy;
