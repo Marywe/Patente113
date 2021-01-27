@@ -33,9 +33,6 @@ public class Monster : MonoBehaviour
     private NavMeshAgent agent;
     private Animator animator;
 
-    [SerializeField]
-    private float recoveryTime;
-
  
     public Transform[] spawnZones; //las 3 primeras son rnd, la 3 es sala bifida, la 4 escaleras, la 5 arriba
     public Transform despawnPoint;
@@ -84,6 +81,8 @@ public class Monster : MonoBehaviour
             SoundManager.PlaySound(SoundManager.Sound.ChasingPlayer, transform.position);
             agent.SetDestination(target.position);
         }
+
+
     }
 
     private void GetHit() //cambia vel, ejecuta animación de hit
@@ -116,7 +115,7 @@ public class Monster : MonoBehaviour
     public IEnumerator Disappear()
     {
         Stay();
-        yield return new WaitForSeconds(1);        
+        yield return new WaitForSeconds(0.5f);        
         transform.position = despawnPoint.position;
 
         yield return new WaitForSeconds(5);
@@ -132,7 +131,8 @@ public class Monster : MonoBehaviour
 
     private void Stay()
     {
-        agent.isStopped = true;
+
+            agent.isStopped = true;
         agent.enabled = false;
         done = true;
     }

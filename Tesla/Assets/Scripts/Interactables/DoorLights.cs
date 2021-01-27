@@ -21,7 +21,7 @@ public class DoorLights : MonoBehaviour
     {
         SoundManager.PlaySound(SoundManager.Sound.LightOn, transform.position);
         GetComponent<Light>().intensity = lightIntensity;
-        GetComponent<Light>().range = lightIntensity;
+        GetComponent<Light>().range = lightRange;
         if (puerta != null) puerta.CheckLights();
         isOn = true;
         transform.GetChild(0).GetComponent<MeshRenderer>().material = GameAssets.instance.lightMaterialOn;

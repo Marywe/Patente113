@@ -214,7 +214,7 @@ public class Player : MonoBehaviour
             d.Open();
         }
 
-        if(other.tag == "EndGame")
+        if(other.tag == "End")
         {
             StartCoroutine(End());
         }
@@ -223,7 +223,7 @@ public class Player : MonoBehaviour
 }
 
 
-#region Botón //Desactivar cuando se saque build
+#region Botón
 #if UNITY_EDITOR
 [CustomEditor(typeof(Player))]
 public class MyEditor : Editor

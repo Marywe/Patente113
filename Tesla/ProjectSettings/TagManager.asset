@@ -10,7 +10,7 @@ TagManager:
   - Botiquin
   - CogerArma
   - AbrirAscensor
-  - EndGame
+  - End
   layers:
   - Default
   - TransparentFX
