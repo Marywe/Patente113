@@ -71,6 +71,7 @@ public class Weapon : MonoBehaviour
     {
         //play sonido disparar
         SoundManager.PlaySound(SoundManager.Sound.ElectricShoot);
+        //SoundManager.PlaySound(SoundManager.Sound.EnemyHitted);
 
         //play camers shake 
 
@@ -178,7 +179,7 @@ public class Weapon : MonoBehaviour
     {
         vueltasDadas = 0;
 
-        GameManager.instance.rechargeText.SetActive(false);
+        
 
         StartCoroutine(turnOnVisor());
         weaponLight.intensity = luzMaxArma;
@@ -193,6 +194,7 @@ public class Weapon : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R)) // Cambiar por recarga de manivela o wasd
         {
+            GameManager.instance.rechargeText.SetActive(false);
 
             if (vueltasDadas == 0)
             {

@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class ElevatorButton : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] GameObject armaPuesta;
 
-    // Update is called once per frame
-    void Update()
+    public void DejarArma()
     {
-        
+        armaPuesta.SetActive(true);
     }
 }

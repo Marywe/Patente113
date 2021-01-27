@@ -29,12 +29,12 @@ public class Player : MonoBehaviour
     [SerializeField] private Weapon weapon;
     private FirstPersonController firstPersonController;
     private Animator animator;
-    private bool isClimbing;
 
     [SerializeField] private GameObject deathScreen;
     [SerializeField] private GameObject deathText;
     private Image screenMuerte;
-    
+    [SerializeField] private GameObject endText;
+
 
     public  Vector3 initialPos;
     public  Quaternion rotation;
@@ -49,15 +49,16 @@ public class Player : MonoBehaviour
         currentLife = maxLife;
         setBlood(0);
         StartCoroutine(spawnSound());
-
-
     }
 
 
     public void GetDamage()
     {
+        StopCoroutine("playerRegen");
+
         --currentLife;
-        SoundManager.PlaySound(SoundManager.Sound.PlayerGetHit, transform.position);
+        SoundManager.PlaySound(SoundManager.Sound.PlayerGetHit);
+        //SoundManager.PlaySound(SoundManager.Sound.EnemEncounter);
 
         StartCoroutine(playerRegen(secondsToRecoverLife));
 
@@ -75,8 +76,6 @@ public class Player : MonoBehaviour
                 StartCoroutine(playerDeath());
                 break;
         }
-
-        
         //animación get hit
         //-vel, mirar como lo hacemos para q conecte con la speed del player controller
     }
@@ -85,20 +84,24 @@ public class Player : MonoBehaviour
     void setBlood(byte alpha, byte red = 135)
     {
         bloodUI.color = new Color32(red, 0, 0, alpha);
-
     }
 
-
-    private IEnumerator playerDeath()
+    void stopPlayer()
     {
         firstPersonController.m_WalkSpeed = 0;
         firstPersonController.canMove = false;
         weapon.canShoot = false;
+    }
+
+    private IEnumerator playerDeath()
+    {
+        stopPlayer();
 
         animator.SetTrigger("ceMurio");
 
         screenMuerte.color = new Color32(0, 0, 0, 0);
         deathScreen.SetActive(true);
+        deathText.SetActive(false);
 
         yield return new WaitForSeconds(0.4f);
         screenMuerte.color = new Color32(0, 0, 0, 63);
@@ -111,10 +114,34 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         deathText.SetActive(true);
 
-
         yield return new WaitForSeconds(3.0f);
         GameAssets.instance.ReloadScene();
     }
+
+    private IEnumerator End()
+    {
+        yield return new WaitForSeconds(5.0f);
+        stopPlayer();
+
+        screenMuerte.color = new Color32(0, 0, 0, 0);
+        deathScreen.SetActive(true);
+        deathText.SetActive(false);
+
+        yield return new WaitForSeconds(0.4f);
+        screenMuerte.color = new Color32(0, 0, 0, 63);
+        yield return new WaitForSeconds(0.4f);
+        screenMuerte.color = new Color32(0, 0, 0, 91);
+        yield return new WaitForSeconds(0.4f);
+        screenMuerte.color = new Color32(0, 0, 0, 127);
+        yield return new WaitForSeconds(0.4f);
+        screenMuerte.color = new Color32(0, 0, 0, 255);
+        yield return new WaitForSeconds(0.2f);
+        endText.SetActive(true);
+
+        yield return new WaitForSeconds(5.0f);
+        GameAssets.instance.LoadMenu();
+    }
+
     private IEnumerator playerRegen(int secs)
     {
         if (currentLife < 2)
@@ -134,7 +161,7 @@ public class Player : MonoBehaviour
 
     private IEnumerator spawnSound()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(0f);
         SoundManager.PlaySound(SoundManager.Sound.Spawn, transform.position);
         StopCoroutine(spawnSound());
     }
@@ -147,20 +174,10 @@ public class Player : MonoBehaviour
         //    GetDamage();
         //    unaVez = true;
         //}
-       
-        //Debug.Log("bhwe");
-        //StartCoroutine(firstPersonController.ActivateClimbing());
+
         firstPersonController.finishingClimbing = false;
         firstPersonController.climbing = true;
         firstPersonController.canMove = false;
-        // firstPersonController.ActivateClimbing1();
-
-        //StartCoroutine(FinishClimb());
-        //animator.SetBool("isClimbing", true);
-
-        //animation
-
-        //subir arma
     }
     
     //bool otraVez = false; // Solo sirve para probar recibir daño
@@ -171,29 +188,12 @@ public class Player : MonoBehaviour
         //    GetDamage();
         //    otraVez = true;
         //}
-        //animator.applyRootMotion = false;
 
         firstPersonController.finishingClimbing = true;
 
         yield return new WaitForSeconds(0.2f);
         firstPersonController.canMove = true;
         firstPersonController.climbing = false;
-
-        //firstPersonController.ActivateClimbing1();
-
-
-        //firstPersonController.canMove = true;
-
-
-        //poner arma guay
-
-        //animator.SetBool("isClimbing", false);
-        //animator.applyRootMotion = true;
-    }
-
-    public void InteractButton()
-    {
-
     }
 
     private void OnTriggerEnter(Collider other)
@@ -207,9 +207,16 @@ public class Player : MonoBehaviour
 
         if (other.tag == "AbrirAscensor")
         {
-           Door d = other.GetComponent<Door>();
+            Door d = other.GetComponent<Door>();
+            ElevatorButton b = other.GetComponent<ElevatorButton>();
             weapon.Deactivate();
+            b.DejarArma();
             d.Open();
+        }
+
+        if(other.tag == "EndGame")
+        {
+            StartCoroutine(End());
         }
     }
 

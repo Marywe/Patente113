@@ -48,7 +48,11 @@ public static class SoundManager
             AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
             audioSource.clip = GetAudioClip(sound);
 
-            //audioSource.maxDistance = 10;
+            audioSource.minDistance = 0.5f;
+            audioSource.maxDistance = 45f;
+            audioSource.spatialBlend = 1f;
+            audioSource.spread = 360f;
+            audioSource.rolloffMode = AudioRolloffMode.Linear;
             //^Tipo de parametros que se pueden editar en el sonido 3D
             audioSource.Play();
 
@@ -84,7 +88,7 @@ public static class SoundManager
     {
        soundTimerDictionary = new Dictionary<Sound, float>();
         soundTimerDictionary[Sound.ChasingPlayer] = 0f;
-        soundTimerDictionary[Sound.HorrorAmbientMenu] = 0f;
+        soundTimerDictionary[Sound.LightOnLoop] = -10f;
         soundTimerDictionary[Sound.TestSoundCannotLoop] = 0f; 
     }
 
@@ -122,29 +126,29 @@ public static class SoundManager
                     }
                     //break;
                 }
-            //case Sound.HorrorAmbientMenu:
-            //    {
-            //        if (soundTimerDictionary.ContainsKey(sound))
-            //        {
-            //            lastTimePlayed = soundTimerDictionary[sound];
-            //            playerMoveTimerMax = 77f; // solo se puede repetir tras 77s (duración de la canción)
-            //
-            //            if (lastTimePlayed + playerMoveTimerMax < Time.time)
-            //            {
-            //                soundTimerDictionary[sound] = Time.time;
-            //                return true;
-            //            }
-            //            else
-            //            {
-            //                return false;
-            //            }
-            //        }
-            //        else // Si en el diccionario no hay un timer asociado para él es que se puede repetir
-            //        {
-            //            return true;
-            //        }
-            //        break;
-            //    }
+            case Sound.LightOnLoop:
+                {
+                    if (soundTimerDictionary.ContainsKey(sound))
+                    {
+                        lastTimePlayed = soundTimerDictionary[sound];
+                        playerMoveTimerMax = 27f; // solo se puede repetir tras 27s (duración de la canción)
+            
+                        if (lastTimePlayed + playerMoveTimerMax < Time.time)
+                        {
+                            soundTimerDictionary[sound] = Time.time;
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                    else // Si en el diccionario no hay un timer asociado para él es que se puede repetir
+                    {
+                        return true;
+                    }
+                    //break;
+                }
                 
         } 
     }

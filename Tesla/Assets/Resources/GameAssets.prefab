@@ -52,14 +52,14 @@ MonoBehaviour:
   - sound: 1
     audioClip: {fileID: 8300000, guid: f14c70076f4378a458d0e8f6afcb7285, type: 3}
   - sound: 2
-    audioClip: {fileID: 8300000, guid: d7e536ec09947fc4cac4abe47c535fb9, type: 3}
+    audioClip: {fileID: 8300000, guid: a73dddc62aabcb84ab4b4f85b811432c, type: 3}
   - sound: 3
     audioClip: {fileID: 8300000, guid: b26c9cf976402e247b1bc1194d680ab0, type: 3}
   - sound: 4
     audioClip: {fileID: 8300000, guid: 4b50f18b734c10947b98d835c7d30402, type: 3}
   - sound: 5
     audioClip: {fileID: 8300000, guid: 486db26d7da966c40b50a90e7479bfe5, type: 3}
-  - sound: 7
+  - sound: 8
     audioClip: {fileID: 8300000, guid: ed31e31277fd9ab418a404f24d11c9a1, type: 3}
   - sound: 6
     audioClip: {fileID: 8300000, guid: 33ac537ac3134294cb8bd6985686fdf9, type: 3}

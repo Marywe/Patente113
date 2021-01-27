@@ -209,7 +209,7 @@ MonoBehaviour:
   state: 0
   done: 0
   target: {fileID: 0}
-  recoveryTime: 5
+  recoveryTime: 10
   spawnZones:
   - {fileID: 0}
   - {fileID: 0}
@@ -219,7 +219,7 @@ MonoBehaviour:
   - {fileID: 0}
   despawnPoint: {fileID: 0}
   disappearToAppear: 1
-  attackTimer: 5
+  attackTimer: 3
 --- !u!95 &6259332753070564179
 Animator:
   serializedVersion: 3

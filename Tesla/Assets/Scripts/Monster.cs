@@ -45,6 +45,7 @@ public class Monster : MonoBehaviour
     [SerializeField]
     private float attackTimer;
     private bool canAttack = true;
+    private bool hitted = false;
 
     private void Awake()
     {
@@ -70,7 +71,7 @@ public class Monster : MonoBehaviour
 
             if (distanceTarget > agent.stoppingDistance)
                 Chase();
-            else if(canAttack && distanceTarget <= agent.stoppingDistance)
+            else if(canAttack && distanceTarget <= agent.stoppingDistance && !hitted)
                 Atacar();
         }       
         
@@ -78,15 +79,17 @@ public class Monster : MonoBehaviour
 
     private void Chase()
     {
-        if(agent.isOnNavMesh)
+        if (agent.isOnNavMesh) 
+        {
+            SoundManager.PlaySound(SoundManager.Sound.ChasingPlayer, transform.position);
             agent.SetDestination(target.position);
+        }
     }
 
     private void GetHit() //cambia vel, ejecuta animación de hit
     {
-        SoundManager.PlaySound(SoundManager.Sound.EnemyHitted, transform.position);
-        // SoundManager.PlaySound(SoundManager.Sound.LightOn);
-        // Descomenta para sentir en tus carnes como dos audios se reproducen a la vez
+        if(!hitted) SoundManager.PlaySound(SoundManager.Sound.EnemyHitted);
+        hitted = true;
 
         StartCoroutine(Disappear());
 
@@ -124,6 +127,7 @@ public class Monster : MonoBehaviour
             else if (GameManager.instance.triggerNum == 4) Appear(spawnZones[4].position);
             else if (GameManager.instance.triggerNum == 5) Appear(spawnZones[5].position);
         }
+        hitted = false;
     }
 
     private void Stay()

@@ -33,5 +33,4 @@ public class Door : MonoBehaviour
         isOpen = false;
         animator.SetBool("opening", isOpen);
     }
-
 }

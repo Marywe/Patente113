@@ -30,7 +30,7 @@ public class DoorLights : MonoBehaviour
 
     public void RayTargetHit() // Se enciende cuando recibe un disparo del arma
     {
-        if(!isOn) SwitchOn();
+        if (!isOn) SwitchOn();
     }
 
     private void Start()
@@ -40,6 +40,12 @@ public class DoorLights : MonoBehaviour
             GetComponent<Light>().intensity = lightIntensity;
             transform.GetChild(0).GetComponent<MeshRenderer>().material = GameAssets.instance.lightMaterialOn;
             transform.GetChild(1).GetComponent<MeshRenderer>().material = GameAssets.instance.lightMaterialOnVisor;
+            
         }
     }
+
+    //private void Update()
+    //{
+    //    if(isOn) SoundManager.PlaySound(SoundManager.Sound.LightOnLoop, transform.position);
+    //}
 }

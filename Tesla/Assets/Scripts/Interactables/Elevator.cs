@@ -9,17 +9,13 @@ public class Elevator : MonoBehaviour
     public float elevatorTime;
     private Door door;
 
+    [SerializeField] GameObject armaPuesta;
+
     private bool hasGone = false;
 
     private void Start()
     {
         door = transform.GetChild(0).GetComponent<Door>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -62,6 +58,8 @@ public class Elevator : MonoBehaviour
 
         invisibleWall.SetActive(false);
         player.SetParent(null);
+
+        Destroy(armaPuesta);
 
         door.Open();
 

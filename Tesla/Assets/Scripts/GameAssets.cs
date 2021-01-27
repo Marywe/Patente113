@@ -34,6 +34,11 @@ public class GameAssets : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
+    public void LoadMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
 
     //---------------------------------------------------------Biblioteca de sonido-------------------------------------------------------------------------------------------//
 
