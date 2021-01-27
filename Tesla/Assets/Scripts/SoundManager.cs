@@ -49,7 +49,7 @@ public static class SoundManager
             audioSource.clip = GetAudioClip(sound);
 
             audioSource.minDistance = 0.5f;
-            audioSource.maxDistance = 45f;
+            audioSource.maxDistance = 25f;
             audioSource.spatialBlend = 1f;
             audioSource.spread = 360f;
             audioSource.rolloffMode = AudioRolloffMode.Linear;

@@ -214,7 +214,7 @@ public class Player : MonoBehaviour
             d.Open();
         }
 
-        if(other.tag == "End")
+        if(other.tag == "EndGame")
         {
             StartCoroutine(End());
         }
