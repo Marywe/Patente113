@@ -30,10 +30,15 @@ public class Player : MonoBehaviour
     private FirstPersonController firstPersonController;
     private Animator animator;
 
+    [SerializeField] private GameObject marte;
     [SerializeField] private GameObject deathScreen;
+    [SerializeField] private GameObject endScreen;
     [SerializeField] private GameObject deathText;
-    private Image screenMuerte;
+    private Image screenEnd;
     [SerializeField] private GameObject endText;
+    private Text textoFinal;
+    [SerializeField] private GameObject creditText;
+    bool creditos = false;
 
 
     public  Vector3 initialPos;
@@ -42,10 +47,11 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-       
+        marte.SetActive(false);
         firstPersonController = gameObject.GetComponent<FirstPersonController>();
         animator = gameObject.GetComponent<Animator>();
-        screenMuerte = deathScreen.GetComponent<Image>();
+        screenEnd = endScreen.GetComponent<Image>();
+        textoFinal = endText.GetComponent<Text>();
         currentLife = maxLife;
         setBlood(0);
         StartCoroutine(spawnSound());
@@ -54,13 +60,13 @@ public class Player : MonoBehaviour
 
     public void GetDamage()
     {
-        StopCoroutine("playerRegen");
+        StopCoroutine(playerRegen());
 
         --currentLife;
         SoundManager.PlaySound(SoundManager.Sound.PlayerGetHit);
         //SoundManager.PlaySound(SoundManager.Sound.EnemEncounter);
 
-        StartCoroutine(playerRegen(secondsToRecoverLife));
+        
 
         switch (currentLife) 
         {
@@ -76,6 +82,8 @@ public class Player : MonoBehaviour
                 StartCoroutine(playerDeath());
                 break;
         }
+
+        StartCoroutine(playerRegen());
         //animación get hit
         //-vel, mirar como lo hacemos para q conecte con la speed del player controller
     }
@@ -99,18 +107,18 @@ public class Player : MonoBehaviour
 
         animator.SetTrigger("ceMurio");
 
-        screenMuerte.color = new Color32(0, 0, 0, 0);
+        screenEnd.color = new Color32(0, 0, 0, 0);
         deathScreen.SetActive(true);
         deathText.SetActive(false);
 
         yield return new WaitForSeconds(0.4f);
-        screenMuerte.color = new Color32(0, 0, 0, 63);
+        screenEnd.color = new Color32(0, 0, 0, 63);
         yield return new WaitForSeconds(0.4f);
-        screenMuerte.color = new Color32(0, 0, 0, 91);
+        screenEnd.color = new Color32(0, 0, 0, 91);
         yield return new WaitForSeconds(0.4f);
-        screenMuerte.color = new Color32(0, 0, 0, 127);
+        screenEnd.color = new Color32(0, 0, 0, 127);
         yield return new WaitForSeconds(0.4f);
-        screenMuerte.color = new Color32(0, 0, 0, 255);
+        screenEnd.color = new Color32(0, 0, 0, 255);
         yield return new WaitForSeconds(0.2f);
         deathText.SetActive(true);
 
@@ -120,43 +128,75 @@ public class Player : MonoBehaviour
 
     private IEnumerator End()
     {
-        yield return new WaitForSeconds(5.0f);
+        yield return new WaitForSeconds(10.0f);
         stopPlayer();
 
-        screenMuerte.color = new Color32(0, 0, 0, 0);
-        deathScreen.SetActive(true);
-        deathText.SetActive(false);
+        endText.SetActive(false);
+        screenEnd.color = new Color32(255, 55, 66, 0);
+        endScreen.SetActive(true);
 
-        yield return new WaitForSeconds(0.4f);
-        screenMuerte.color = new Color32(0, 0, 0, 63);
-        yield return new WaitForSeconds(0.4f);
-        screenMuerte.color = new Color32(0, 0, 0, 91);
-        yield return new WaitForSeconds(0.4f);
-        screenMuerte.color = new Color32(0, 0, 0, 127);
-        yield return new WaitForSeconds(0.4f);
-        screenMuerte.color = new Color32(0, 0, 0, 255);
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.3f);
+        screenEnd.color = new Color32(255, 55, 66, 63);
+        yield return new WaitForSeconds(0.3f);
+        screenEnd.color = new Color32(255, 55, 66, 91);
+        yield return new WaitForSeconds(0.3f);
+        screenEnd.color = new Color32(255, 55, 66, 127);
+        yield return new WaitForSeconds(0.3f);
+        screenEnd.color = new Color32(255, 55, 66, 200); 
+        yield return new WaitForSeconds(0.3f);
+        screenEnd.color = new Color32(255, 55, 66, 255);
+        textoFinal.color = new Color32(255, 255, 255, 0);
         endText.SetActive(true);
+        yield return new WaitForSeconds(0.35f);
+        textoFinal.color = new Color32(255, 255, 255, 128);
+        yield return new WaitForSeconds(0.35f);
+        textoFinal.color = new Color32(255, 255, 255, 255);
+        creditos = true;
 
-        yield return new WaitForSeconds(5.0f);
-        GameAssets.instance.LoadMenu();
+
+        yield return new WaitForSeconds(8.5f);
+        textoFinal.color = new Color32(255, 255, 255, 128);
+        yield return new WaitForSeconds(0.3f);
+        textoFinal.color = new Color32(255, 255, 255, 64);
+        yield return new WaitForSeconds(0.3f);
+        textoFinal.color = new Color32(255, 255, 255, 0);
+        yield return new WaitForSeconds(1.0f);
+
+        //GameAssets.instance.Exit();
+        
     }
 
-    private IEnumerator playerRegen(int secs)
+    private void Update()
     {
-        if (currentLife < 2)
+        if (creditos)
         {
-            yield return new WaitForSeconds(secs - 5);
+            creditText.SetActive(true);
+            creditText.transform.Translate(Vector3.up* 110 * Time.deltaTime);
+
+            if(creditText.transform.localPosition.y > 90) GameAssets.instance.LoadMenu();
+        }
+    }
+
+    private IEnumerator playerRegen()
+    {
+        if (currentLife == 1)
+        {
+            yield return new WaitForSeconds(secondsToRecoverLife - 5);
+            if(currentLife > 1) yield break;
             ++currentLife;
             setBlood(128);
             firstPersonController.m_WalkSpeed = 6f;
         }
 
-        yield return new WaitForSeconds(secs);
-        ++currentLife;
-        setBlood(0);
-        firstPersonController.m_WalkSpeed = 8f;
-        if (currentLife >= maxLife) StopCoroutine(playerRegen(secs));
+        if (currentLife == 2)
+        {
+            yield return new WaitForSeconds(secondsToRecoverLife);
+            if(currentLife < 2) yield break;
+            ++currentLife;
+            setBlood(0);
+            firstPersonController.m_WalkSpeed = 8f;
+        }
+       
     }
 
     private IEnumerator spawnSound()
@@ -199,7 +239,8 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "CogerArma")
-        {  
+        {
+            SoundManager.PlaySound(SoundManager.Sound.LightOn);
             Destroy(other.gameObject);
             weapon.Activate();
             weapon.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>().Stop();
@@ -214,7 +255,12 @@ public class Player : MonoBehaviour
             d.Open();
         }
 
-        if(other.tag == "EndGame")
+        if (other.tag == "End")
+        {
+            marte.SetActive(true);
+        }
+
+        if (other.tag == "EndGame")
         {
             StartCoroutine(End());
         }

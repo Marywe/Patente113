@@ -18,6 +18,8 @@ public static class SoundManager
         PlayerGetHit,
         OpenDoor,
         LightOnLoop,
+        TurnOffWeapon,
+        Click,
         TestSoundCannotLoop, // Sonido de prueba que no se puede repetir a menos que hayan pasado 5s
     }
 
@@ -49,7 +51,7 @@ public static class SoundManager
             audioSource.clip = GetAudioClip(sound);
 
             audioSource.minDistance = 0.5f;
-            audioSource.maxDistance = 25f;
+            audioSource.maxDistance = 35f;
             audioSource.spatialBlend = 1f;
             audioSource.spread = 360f;
             audioSource.rolloffMode = AudioRolloffMode.Linear;

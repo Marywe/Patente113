@@ -137,6 +137,7 @@ public class Weapon : MonoBehaviour
 
     private IEnumerator turnOffVisor()
     {
+        //SoundManager.PlaySound(SoundManager.Sound.TurnOffWeapon);
         yield return new WaitForSeconds(0.1f);
         visorMaterial.color = new Color32(255, 255, 255, 191);
         yield return new WaitForSeconds(0.1f);
@@ -147,6 +148,8 @@ public class Weapon : MonoBehaviour
         visorMaterial.color = new Color32(255, 255, 255, 0);
         yield return new WaitForSeconds(0.05f);
         visor.SetActive(false);
+        yield return new WaitForSeconds(0.2f);
+        SoundManager.PlaySound(SoundManager.Sound.TurnOffWeapon);
 
 
         if (!rechargeTextReaded)
@@ -204,6 +207,7 @@ public class Weapon : MonoBehaviour
             }
             else
             {
+                SoundManager.PlaySound(SoundManager.Sound.Click);
                 anim.SetTrigger("rightRound");
                 ++vueltasDadas;
 
