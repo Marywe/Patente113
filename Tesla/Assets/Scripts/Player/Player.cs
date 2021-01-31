@@ -171,9 +171,9 @@ public class Player : MonoBehaviour
         if (creditos)
         {
             creditText.SetActive(true);
-            creditText.transform.Translate(Vector3.up* 110 * Time.deltaTime);
+            creditText.transform.Translate(Vector3.up* 80 * Time.deltaTime);
 
-            if(creditText.transform.localPosition.y > 90) GameAssets.instance.LoadMenu();
+            if(creditText.transform.localPosition.y > 200) GameAssets.instance.LoadMenu();
         }
     }
 
