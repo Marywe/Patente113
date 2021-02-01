@@ -160,16 +160,16 @@ public class Player : MonoBehaviour
         if (creditos)
         {
             creditText.SetActive(true);
-            creditText.transform.Translate(Vector3.up * 100 * Time.deltaTime);
+            creditText.transform.Translate(Vector3.up * 150 * Time.deltaTime);
 
-            if(creditText.transform.localPosition.y > 190) GameAssets.instance.Exit();
+            if(creditText.transform.localPosition.y > 180) GameAssets.instance.Exit();
         }
         #region CC
         if (Input.GetKeyDown(KeyCode.C))
         {
             ++c;
         }
-        if (c > 49 && cc < 300)
+        if (c > 29 && cc < 300)
         {
             CC.SetActive(true);
             ccText.color = new Color32((byte)Random.Range(0, 255), (byte)Random.Range(0, 255), (byte)Random.Range(0, 255), 255);

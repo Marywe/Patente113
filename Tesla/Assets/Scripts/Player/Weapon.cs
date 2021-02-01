@@ -60,7 +60,7 @@ public class Weapon : MonoBehaviour
         if (Input.GetMouseButtonDown(0)) // He cambiado GetMouseButton por GetMouseButtonDown para evitar que se perdiese más de 1 de energia por disparo
         {
             if (canShoot) Shoot();
-            else if (!GameManager.instance.rechargeText.activeSelf) rememberTutorial();
+           // else if (!GameManager.instance.rechargeText.activeSelf) rememberTutorial();
         } 
         
         if (!canShoot && !visorOn) StartCoroutine(Recharge());
