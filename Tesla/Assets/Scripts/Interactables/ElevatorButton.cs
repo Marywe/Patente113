@@ -5,9 +5,15 @@ using UnityEngine;
 public class ElevatorButton : MonoBehaviour
 {
     [SerializeField] GameObject armaPuesta;
+    bool unaVez = false;
 
     public void DejarArma()
     {
-        armaPuesta.SetActive(true);
+        if (!unaVez)
+        {
+            armaPuesta.SetActive(true);
+            unaVez = true;
+        }
+        
     }
 }

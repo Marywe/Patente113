@@ -53,7 +53,8 @@ public class Elevator : MonoBehaviour
 
         player.localPosition = pos;
 
-        yield return new WaitForEndOfFrame();
+        //yield return new WaitForEndOfFrame();
+        yield return new WaitForSeconds(0.01f);
         player.GetComponent<CharacterController>().enabled = true;
 
         invisibleWall.SetActive(false);

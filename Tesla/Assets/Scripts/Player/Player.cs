@@ -35,8 +35,6 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject endScreen;
     [SerializeField] private GameObject deathText;
     private Image screenEnd;
-    [SerializeField] private GameObject endText;
-    private Text textoFinal;
     [SerializeField] private GameObject creditText;
     bool creditos = false;
 
@@ -51,7 +49,6 @@ public class Player : MonoBehaviour
         firstPersonController = gameObject.GetComponent<FirstPersonController>();
         animator = gameObject.GetComponent<Animator>();
         screenEnd = endScreen.GetComponent<Image>();
-        textoFinal = endText.GetComponent<Text>();
         currentLife = maxLife;
         setBlood(0);
         StartCoroutine(spawnSound());
@@ -131,7 +128,7 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(10.0f);
         stopPlayer();
 
-        endText.SetActive(false);
+        
         screenEnd.color = new Color32(255, 55, 66, 0);
         endScreen.SetActive(true);
 
@@ -145,22 +142,21 @@ public class Player : MonoBehaviour
         screenEnd.color = new Color32(255, 55, 66, 200); 
         yield return new WaitForSeconds(0.3f);
         screenEnd.color = new Color32(255, 55, 66, 255);
-        textoFinal.color = new Color32(255, 255, 255, 0);
-        endText.SetActive(true);
-        yield return new WaitForSeconds(0.35f);
-        textoFinal.color = new Color32(255, 255, 255, 128);
-        yield return new WaitForSeconds(0.35f);
-        textoFinal.color = new Color32(255, 255, 255, 255);
+      
+        //yield return new WaitForSeconds(0.35f);
+        //textoFinal.color = new Color32(255, 255, 255, 128);
+        //yield return new WaitForSeconds(0.35f);
+        //textoFinal.color = new Color32(255, 255, 255, 255);
         creditos = true;
-
-
-        yield return new WaitForSeconds(8.5f);
-        textoFinal.color = new Color32(255, 255, 255, 128);
-        yield return new WaitForSeconds(0.3f);
-        textoFinal.color = new Color32(255, 255, 255, 64);
-        yield return new WaitForSeconds(0.3f);
-        textoFinal.color = new Color32(255, 255, 255, 0);
-        yield return new WaitForSeconds(1.0f);
+        //
+        //
+        //yield return new WaitForSeconds(8.5f);
+        //textoFinal.color = new Color32(255, 255, 255, 128);
+        //yield return new WaitForSeconds(0.3f);
+        //textoFinal.color = new Color32(255, 255, 255, 64);
+        //yield return new WaitForSeconds(0.3f);
+        //textoFinal.color = new Color32(255, 255, 255, 0);
+        //yield return new WaitForSeconds(1.0f);
 
         //GameAssets.instance.Exit();
         
@@ -171,7 +167,7 @@ public class Player : MonoBehaviour
         if (creditos)
         {
             creditText.SetActive(true);
-            creditText.transform.Translate(Vector3.up* 80 * Time.deltaTime);
+            creditText.transform.Translate(Vector3.up * 80 * Time.deltaTime);
 
             if(creditText.transform.localPosition.y > 200) GameAssets.instance.LoadMenu();
         }
@@ -235,7 +231,7 @@ public class Player : MonoBehaviour
         firstPersonController.canMove = true;
         firstPersonController.climbing = false;
     }
-
+    bool unaVez = false;
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "CogerArma")
@@ -246,13 +242,14 @@ public class Player : MonoBehaviour
             weapon.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>().Stop();
         }
 
-        if (other.tag == "AbrirAscensor")
+        if (other.tag == "AbrirAscensor" && !unaVez)
         {
             Door d = other.GetComponent<Door>();
             ElevatorButton b = other.GetComponent<ElevatorButton>();
             weapon.Deactivate();
             b.DejarArma();
             d.Open();
+            unaVez = true;
         }
 
         if (other.tag == "End")
