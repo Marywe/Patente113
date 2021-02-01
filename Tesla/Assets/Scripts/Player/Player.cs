@@ -38,6 +38,13 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject creditText;
     bool creditos = false;
 
+    [SerializeField] private GameObject CC;
+    private Text ccText;
+    int c = 0;
+    int cc = 0;
+    bool check = false;
+    
+
 
     public  Vector3 initialPos;
     public  Quaternion rotation;
@@ -52,6 +59,7 @@ public class Player : MonoBehaviour
         currentLife = maxLife;
         setBlood(0);
         StartCoroutine(spawnSound());
+        ccText = CC.GetComponent<Text>();
     }
 
 
@@ -143,23 +151,8 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         screenEnd.color = new Color32(255, 55, 66, 255);
       
-        //yield return new WaitForSeconds(0.35f);
-        //textoFinal.color = new Color32(255, 255, 255, 128);
-        //yield return new WaitForSeconds(0.35f);
-        //textoFinal.color = new Color32(255, 255, 255, 255);
-        creditos = true;
-        //
-        //
-        //yield return new WaitForSeconds(8.5f);
-        //textoFinal.color = new Color32(255, 255, 255, 128);
-        //yield return new WaitForSeconds(0.3f);
-        //textoFinal.color = new Color32(255, 255, 255, 64);
-        //yield return new WaitForSeconds(0.3f);
-        //textoFinal.color = new Color32(255, 255, 255, 0);
-        //yield return new WaitForSeconds(1.0f);
-
-        //GameAssets.instance.Exit();
         
+        creditos = true;
     }
 
     private void Update()
@@ -167,10 +160,27 @@ public class Player : MonoBehaviour
         if (creditos)
         {
             creditText.SetActive(true);
-            creditText.transform.Translate(Vector3.up * 80 * Time.deltaTime);
+            creditText.transform.Translate(Vector3.up * 100 * Time.deltaTime);
 
-            if(creditText.transform.localPosition.y > 200) GameAssets.instance.LoadMenu();
+            if(creditText.transform.localPosition.y > 190) GameAssets.instance.Exit();
         }
+        #region CC
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            ++c;
+        }
+        if (c > 49 && cc < 300)
+        {
+            CC.SetActive(true);
+            ccText.color = new Color32((byte)Random.Range(0, 255), (byte)Random.Range(0, 255), (byte)Random.Range(0, 255), 255);
+            ++cc;
+        }
+        else
+        {
+            CC.SetActive(false);       
+        }
+        #endregion
+
     }
 
     private IEnumerator playerRegen()
@@ -202,29 +212,15 @@ public class Player : MonoBehaviour
         StopCoroutine(spawnSound());
     }
 
-    //bool unaVez = false; // Solo sirve para probar recibir daño
     public void ClimbLadder() // Ya no funciona por tiempo, simplemente empieza a escalar al pulsar F y no para hasta Finishclimb()
     {
-        //if (!unaVez) // Solo sirve para probar recibir daño
-        //{
-        //    GetDamage();
-        //    unaVez = true;
-        //}
-
         firstPersonController.finishingClimbing = false;
         firstPersonController.climbing = true;
         firstPersonController.canMove = false;
     }
     
-    //bool otraVez = false; // Solo sirve para probar recibir daño
     public IEnumerator FinishClimb() //Cuando sale de la escalera (se llama dentro de ladder.cs) deja de escalar
     {
-        //if (!otraVez)// Solo sirve para probar recibir daño
-        //{
-        //    GetDamage();
-        //    otraVez = true;
-        //}
-
         firstPersonController.finishingClimbing = true;
 
         yield return new WaitForSeconds(0.2f);
@@ -262,9 +258,7 @@ public class Player : MonoBehaviour
             StartCoroutine(End());
         }
     }
-
 }
-
 
 #region Botón
 #if UNITY_EDITOR
